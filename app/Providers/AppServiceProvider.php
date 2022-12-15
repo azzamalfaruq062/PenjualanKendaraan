@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Repository\Kendaraan\Repository;
+use App\Repository\Kendaraan\RepositoryImplement;
+use App\Services\Kendaraan\Services;
+use App\Services\Kendaraan\ServicesImplement;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +17,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(Services::class, ServicesImplement::class);
+        $this->app->bind(Repository::class, RepositoryImplement::class);
     }
 
     /**
