@@ -53,4 +53,22 @@ class ServicesImplement implements Services
             return [];
         }
     }
+    public function updateMobil(array $updateMobil, $id)
+    {
+        try{
+            return $this->repository->updateMobil($updateMobil, $id);
+        }catch(Exception $exception){
+            Log::debug($exception->getMessage());
+            return [];
+        }
+    }
+    public function updateMotor(array $updateMotor, $id)
+    {
+        try{
+            return $this->repository->updateMotor($updateMotor, $id);
+        }catch(Exception $exception){
+            Log::debug($exception->getMessage());
+            return [];
+        }
+    }
 }

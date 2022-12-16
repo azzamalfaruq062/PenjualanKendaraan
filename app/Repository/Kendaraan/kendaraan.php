@@ -18,7 +18,7 @@ class Kendaraan
 
   public function kendaraan()
   {
-    $kendaraan = $this->name . ',' . $this->tahun_keluaran . ',' . $this->warna . ',' . $this->harga . ',';
+    $kendaraan = "'$this->name'," . "'$this->tahun_keluaran',"."'$this->warna',"."'$this->harga',";
     return $kendaraan;
   }
 }

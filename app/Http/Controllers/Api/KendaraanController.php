@@ -37,19 +37,74 @@ class KendaraanController extends Controller
     public function addKendaraan(Request $request)
     {
         $addMobil = $request->only([
-            'name','tahun_keluaran','warna','harga','mesin','kapasitas_penumpang','tipe',
+            'name',
+            'tahun_keluaran',
+            'warna',
+            'harga',
+            'mesin',
+            'kapasitas_penumpang',
+            'tipe',
         ]);
+
         $addMotor = $request->only([
-            'name','tahun_keluaran','warna','harga','mesin','tipe_suspensi','tipe_transmisi',
+            'name',
+            'tahun_keluaran',
+            'warna',
+            'harga',
+            'mesin',
+            'tipe_suspensi',
+            'tipe_transmisi',
         ]);
 
         if ($request->kapasitas_penumpang)
         {
             $result = $this->kendaraanServices->addMobil($addMobil);
-        }elseif($request->tipe_suspensi)
+        }
+        elseif($request->tipe_suspensi)
         {
             $result = $this->kendaraanServices->addMotor($addMotor);
         }
+        
+        return response()->json([
+            'success' => true,
+            'code' => 200,
+            'data' => $result,
+        ]);
+    }
+
+
+    public function updateKendaraan(Request $request, $id)
+    {
+        $id = $request->route('id');
+        $updateMobil = $request->only([
+            'name',
+            'tahun_keluaran',
+            'warna',
+            'harga',
+            'mesin',
+            'kapasitas_penumpang',
+            'tipe',
+        ]);
+
+        $updateMotor = $request->only([
+            'name',
+            'tahun_keluaran',
+            'warna',
+            'harga',
+            'mesin',
+            'tipe_suspensi',
+            'tipe_transmisi',
+        ]);
+
+        if ($request->kapasitas_penumpang)
+        {
+            $result = $this->kendaraanServices->updateMobil($updateMobil, $id);
+        }
+        elseif($request->tipe_suspensi)
+        {
+            $result = $this->kendaraanServices->updateMotor($updateMotor, $id);
+        }
+        
         return response()->json([
             'success' => true,
             'code' => 200,

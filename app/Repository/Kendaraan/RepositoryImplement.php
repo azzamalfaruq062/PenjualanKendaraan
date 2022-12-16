@@ -30,5 +30,13 @@ class RepositoryImplement implements Repository
     {
         return $this->model->create($addMotor);
     }
+    public function updateMobil(array $updateMobil, $id)
+    {
+        return $this->model->find($id)->update($updateMobil);
+    }
+    public function updateMotor(array $updateMotor, $id)
+    {
+        return $this->model->find($id)->update($updateMotor);
+    }
 
 }

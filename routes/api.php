@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Api\KendaraanController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +20,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('kendaraan', [KendaraanController::class, 'getAll']);
 Route::get('kendaraan/{name}', [KendaraanController::class, 'getbyName']);
-
 Route::post('kendaraan/add', [KendaraanController::class, 'addKendaraan']);
-// Route::get('coba', [KendaraanController::class, 'coba']);
+Route::put('kendaraan/update/{id}', [KendaraanController::class, 'updateKendaraan']);
