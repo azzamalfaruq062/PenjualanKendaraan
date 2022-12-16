@@ -105,11 +105,11 @@ class KendaraanController extends Controller
             'mesin',
         ]);
 
-        if ($request->kapasitas_penumpang)
+        if ($request->kapasitas_penumpang || $request->tipe)
         {
             $result = $this->kendaraanServices->updateMobil($updateMobil, $id);
         }
-        elseif($request->tipe_suspensi)
+        elseif($request->tipe_suspensi || $request->tipe_transmisi)
         {
             $result = $this->kendaraanServices->updateMotor($updateMotor, $id);
         }
