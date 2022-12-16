@@ -71,4 +71,13 @@ class ServicesImplement implements Services
             return [];
         }
     }
+    public function stokKendaraan()
+    {
+        try{
+            return $this->repository->stokKendaraan();
+        }catch(Exception $exception){
+            Log::debug($exception->getMessage());
+            return [];
+        }
+    }
 }

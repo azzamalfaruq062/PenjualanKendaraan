@@ -14,11 +14,12 @@ class CreatePenjualansTable extends Migration
     public function up()
     {
         Schema::connection('mongodb')
-        ->create('penjualans', function ($collection) 
+        ->create('penjualans', function (Blueprint $collection) 
         {
             $collection->id();
             $collection->string('pembeli');
             $collection->date('tanggal_beli');
+            $collection->foreignId('kendaraans_id')->constrained('kendaraans');
             $collection->timestamps();
         });
     }

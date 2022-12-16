@@ -10,4 +10,5 @@ interface Repository
     public function addMotor(array $addMotor);
     public function updateMobil(array $updateMobil, $id);
     public function updateMotor(array $updateMotor, $id);
+    public function stokKendaraan();
 }

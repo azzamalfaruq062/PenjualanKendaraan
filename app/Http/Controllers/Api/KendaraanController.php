@@ -111,4 +111,15 @@ class KendaraanController extends Controller
             'data' => $result,
         ]);
     }
+
+    public function lihatStokKendaraan()
+    {
+        $result = $this->kendaraanServices->stokKendaraan();
+        return response()->json([
+            'success' => true,
+            'code' => 200,
+            'data' => $result,
+        ]);
+    }
+
 }

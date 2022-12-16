@@ -38,5 +38,8 @@ class RepositoryImplement implements Repository
     {
         return $this->model->find($id)->update($updateMotor);
     }
-
+    public function stokKendaraan()
+    {
+        return $this->model->all()->count();
+    }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\KendaraanController;
+use App\Http\Controllers\Api\PenjualanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,3 +23,8 @@ Route::get('kendaraan', [KendaraanController::class, 'getAll']);
 Route::get('kendaraan/{name}', [KendaraanController::class, 'getbyName']);
 Route::post('kendaraan/add', [KendaraanController::class, 'addKendaraan']);
 Route::put('kendaraan/update/{id}', [KendaraanController::class, 'updateKendaraan']);
+Route::get('stokKendaraan', [KendaraanController::class, 'lihatStokKendaraan']);
+
+Route::get('all', [PenjualanController::class, 'getAll']);
+Route::post('penjualan', [PenjualanController::class, 'penjualan']);
+Route::post('laporan/{kendaraan}', [PenjualanController::class, 'laporanPenjualan']);
