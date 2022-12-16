@@ -97,6 +97,14 @@ class KendaraanController extends Controller
             'tipe_transmisi',
         ]);
 
+        $updateKendaraan = $request->only([
+            'name',
+            'tahun_keluaran',
+            'warna',
+            'harga',
+            'mesin',
+        ]);
+
         if ($request->kapasitas_penumpang)
         {
             $result = $this->kendaraanServices->updateMobil($updateMobil, $id);
@@ -104,6 +112,10 @@ class KendaraanController extends Controller
         elseif($request->tipe_suspensi)
         {
             $result = $this->kendaraanServices->updateMotor($updateMotor, $id);
+        }
+        else
+        {
+            $result = $this->kendaraanServices->updateMotor($updateKendaraan, $id);
         }
         
         return response()->json([
