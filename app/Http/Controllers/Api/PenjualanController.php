@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Helpers\ApiFormater;
 use App\Http\Controllers\Controller;
 use App\Services\Penjualan\Services;
 use Illuminate\Http\Request;
@@ -17,11 +18,11 @@ class PenjualanController extends Controller
     public function getAll()
     {
         $result = $this->penjualanServices->getAll();
-        return response()->json([
-            'success' => true,
-            'code' => 200,
-            'data' => $result,
-        ]);
+        if ($result) {
+            return ApiFormater::createApi(200, 'Succes', $result);
+        }else{
+            return ApiFormater::createApi(400, 'Not Found');
+        }
     }
 
     public function penjualan(Request $request)
@@ -34,20 +35,20 @@ class PenjualanController extends Controller
             'tahun_keluaran',
         ]);
         $result = $this->penjualanServices->penjualan($addPenjualan);
-        return response()->json([
-            'success' => true,
-            'code' => 200,
-            'data' => $result,
-        ]);
+        if ($result) {
+            return ApiFormater::createApi(200, 'Succes', $result);
+        }else{
+            return ApiFormater::createApi(400, 'Not Found');
+        }
     }
 
     public function laporanPenjualan($kendaraan)
     {
         $result = $this->penjualanServices->laporanPenjualan($kendaraan);
-        return response()->json([
-            'success' => true,
-            'code' => 200,
-            'data' => $result,
-        ]);
+        if ($result) {
+            return ApiFormater::createApi(200, 'Succes', $result);
+        }else{
+            return ApiFormater::createApi(400, 'Not Found');
+        }
     }
 }
