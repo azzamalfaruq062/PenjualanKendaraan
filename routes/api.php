@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\KendaraanController;
 use App\Http\Controllers\Api\PenjualanController;
 use Illuminate\Support\Facades\Route;
@@ -28,3 +29,7 @@ Route::get('kendaraan/stok', [KendaraanController::class, 'lihatStokKendaraan'])
 Route::post('penjualan', [PenjualanController::class, 'penjualan']);
 Route::get('laporan/all', [PenjualanController::class, 'getAll']);
 Route::get('laporan/{kendaraan}', [PenjualanController::class, 'laporanPenjualan']);
+
+Route::post('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/user', [AuthController::class, 'user'])->name('user');
