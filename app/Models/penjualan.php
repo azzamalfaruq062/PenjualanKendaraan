@@ -3,15 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Jenssegers\Mongodb\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
 
-
-class Kendaraan extends Model
+class penjualan extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    public function penjualans()
+
+    public function kendaraans()
     {
-        return $this->belongsTo(penjualan::class);
+        return $this->hasMany(Kendaraan::class);
     }
 }

@@ -21,4 +21,14 @@ class RepositoryImplement implements Repository
     {
         return $this->model->where('name', $name)->get();
     }
+
+    public function addMobil(array $addMobil)
+    {
+        return $this->model->create($addMobil);
+    }
+    public function addMotor(array $addMotor)
+    {
+        return $this->model->create($addMotor);
+    }
+
 }

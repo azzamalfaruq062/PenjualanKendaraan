@@ -33,4 +33,27 @@ class KendaraanController extends Controller
             'data' => $result,
         ]);
     }
+
+    public function addKendaraan(Request $request)
+    {
+        $addMobil = $request->only([
+            'name','tahun_keluaran','warna','harga','mesin','kapasitas_penumpang','tipe',
+        ]);
+        $addMotor = $request->only([
+            'name','tahun_keluaran','warna','harga','mesin','tipe_suspensi','tipe_transmisi',
+        ]);
+
+        if ($request->kapasitas_penumpang)
+        {
+            $result = $this->kendaraanServices->addMobil($addMobil);
+        }elseif($request->tipe_suspensi)
+        {
+            $result = $this->kendaraanServices->addMotor($addMotor);
+        }
+        return response()->json([
+            'success' => true,
+            'code' => 200,
+            'data' => $result,
+        ]);
+    }
 }

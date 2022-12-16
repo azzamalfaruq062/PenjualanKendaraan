@@ -15,9 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 Route::get('kendaraan', [KendaraanController::class, 'getAll']);
 Route::get('kendaraan/{name}', [KendaraanController::class, 'getbyName']);
+
+Route::post('kendaraan/add', [KendaraanController::class, 'addKendaraan']);
+// Route::get('coba', [KendaraanController::class, 'coba']);
