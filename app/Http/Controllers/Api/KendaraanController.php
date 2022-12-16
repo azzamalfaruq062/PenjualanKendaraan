@@ -18,21 +18,23 @@ class KendaraanController extends Controller
     public function getAll()
     {
         $result = $this->kendaraanServices->getAll();
-        return response()->json([
-            'success' => true,
-            'code' => 200,
-            'data' => $result,
-        ]);
+
+        if ($result) {
+            return ApiFormater::createApi(200, 'Succes', $result);
+        }else{
+            return ApiFormater::createApi(400, 'Not Found');
+        }
     }
 
     public function getbyName($name)
     {
         $result = $this->kendaraanServices->getbyName($name);
-        return response()->json([
-            'success' => true,
-            'code' => 200,
-            'data' => $result,
-        ]);
+
+        if ($result) {
+            return ApiFormater::createApi(200, 'Succes', $result);
+        }else{
+            return ApiFormater::createApi(400, 'Not Found');
+        }
     }
 
     public function addKendaraan(Request $request)
@@ -66,11 +68,11 @@ class KendaraanController extends Controller
             $result = $this->kendaraanServices->addMotor($addMotor);
         }
         
-        return response()->json([
-            'success' => true,
-            'code' => 200,
-            'data' => $result,
-        ]);
+        if ($result) {
+            return ApiFormater::createApi(200, 'Succes', $result);
+        }else{
+            return ApiFormater::createApi(400, 'Not Found');
+        }
     }
 
 
