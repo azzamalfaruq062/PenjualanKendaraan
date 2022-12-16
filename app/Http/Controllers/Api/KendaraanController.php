@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Helpers\ApiFormater;
 use App\Http\Controllers\Controller;
 use App\Services\Kendaraan\Services;
 use Illuminate\Http\Request;
@@ -115,11 +116,11 @@ class KendaraanController extends Controller
     public function lihatStokKendaraan()
     {
         $result = $this->kendaraanServices->stokKendaraan();
-        return response()->json([
-            'success' => true,
-            'code' => 200,
-            'data' => $result,
-        ]);
+        if ($result) {
+            return ApiFormater::createApi(200, 'Succes', $result);
+        }else{
+            return ApiFormater::createApi(400, 'Not Found');
+        }
     }
 
 }

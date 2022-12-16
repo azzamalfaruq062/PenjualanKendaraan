@@ -23,8 +23,8 @@ Route::get('kendaraan', [KendaraanController::class, 'getAll']);
 Route::get('kendaraan/{name}', [KendaraanController::class, 'getbyName']);
 Route::post('kendaraan/add', [KendaraanController::class, 'addKendaraan']);
 Route::put('kendaraan/update/{id}', [KendaraanController::class, 'updateKendaraan']);
-Route::get('stokKendaraan', [KendaraanController::class, 'lihatStokKendaraan']);
+Route::get('kendaraan/stok', [KendaraanController::class, 'lihatStokKendaraan']);
 
-Route::get('all', [PenjualanController::class, 'getAll']);
 Route::post('penjualan', [PenjualanController::class, 'penjualan']);
+Route::get('laporan/all', [PenjualanController::class, 'getAll']);
 Route::get('laporan/{kendaraan}', [PenjualanController::class, 'laporanPenjualan']);
