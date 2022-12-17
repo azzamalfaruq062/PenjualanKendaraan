@@ -23,6 +23,7 @@ class AuthController extends Controller
         ]); 
         return new UserResource($user); 
     }
+    
     public function login(ValidateUserLogin $request){
       
         $credentials = request(['email', 'password']);

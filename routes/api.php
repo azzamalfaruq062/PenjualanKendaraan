@@ -24,7 +24,7 @@ Route::get('kendaraan', [KendaraanController::class, 'getAll']);
 Route::get('kendaraan/{name}', [KendaraanController::class, 'getbyName']);
 Route::post('kendaraan/add', [KendaraanController::class, 'addKendaraan']);
 Route::put('kendaraan/update/{id}', [KendaraanController::class, 'updateKendaraan']);
-Route::get('kendaraan/stok', [KendaraanController::class, 'lihatStokKendaraan']);
+Route::get('stok', [KendaraanController::class, 'stok']);
 
 Route::post('penjualan', [PenjualanController::class, 'penjualan']);
 Route::get('laporan/all', [PenjualanController::class, 'getAll']);

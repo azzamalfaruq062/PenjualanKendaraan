@@ -119,17 +119,19 @@ class KendaraanController extends Controller
         {
             $result = $this->kendaraanServices->updateMotor($updateKendaraan, $id);
         }
+
+        if ($result) {
+            return ApiFormater::createApi(200, 'Succes', $result);
+        }else{
+            return ApiFormater::createApi(400, 'Not Found');
+        }
         
-        return response()->json([
-            'success' => true,
-            'code' => 200,
-            'data' => $result,
-        ]);
     }
 
-    public function lihatStokKendaraan()
+    public function stok()
     {
         $result = $this->kendaraanServices->stokKendaraan();
+
         if ($result) {
             return ApiFormater::createApi(200, 'Succes', $result);
         }else{
