@@ -8,13 +8,13 @@ Alat yang digunakan :
 Langkah-langkah :
 1. Download MongoDB, kemudian install driver mongodb pada windous, dan edit file php.ini.
 2. install laravel baru.
-```bash
-composer create-project --prefer-dist laravel/laravel="^8.0"
-```
+    ```bash
+    composer create-project --prefer-dist laravel/laravel="^8.0"
+    ```
 3. install librari mongodb pada file laravel, karena menggunakan laravel versi 8 maka sesuaikan librarinya disini menggunakan versi 3.8.
-```bash
-composer require jenssegers/mongodb="^3.8"
-```
+    ```bash
+    composer require jenssegers/mongodb="^3.8"
+    ```
 4. Konfigurasi mongodb untuk laravel.
     - pada file config/app
     ```bash
@@ -41,14 +41,14 @@ composer require jenssegers/mongodb="^3.8"
     DB_PASSWORD=
     ```
 5. Setelah itu membuat Model Mahasiswa sekaligus migrate, controller dan resource untuk controller dengan cara dibawah.
-```bash
-php artisan make:model Mahasiswa -mcr
-```
+    ```bash
+    php artisan make:model Mahasiswa -mcr
+    ```
 6. Setelah itu konfirurasi semuanya dan lakukan migrate database dengan cara dibawah.
-```bash
-php artisan migrate
-php artisan migrate:fresh
-```
+    ```bash
+    php artisan migrate
+    php artisan migrate:fresh
+    ```
 7. Setelah itu buat controller untuk CRUD pada controller, dan buat route untuk api pada routes/api.php .
 
 ## Cara Menggunakan API
