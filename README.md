@@ -26,7 +26,7 @@ Langkah-langkah :
                 'driver' => 'mongodb',
                 'host' => env('DB_HOST', '127.0.0.1'),
                 'port' => env('DB_PORT', 27017),
-                'database' => env('DB_DATABASE', 'tes'),
+                'database' => env('DB_DATABASE', ''),
                 'username' => env('DB_USERNAME', ''),
                 'password' => env('DB_PASSWORD', ''),
             ],
@@ -36,53 +36,83 @@ Langkah-langkah :
     DB_CONNECTION=mongodb
     DB_HOST=127.0.0.1
     DB_PORT=27017
-    DB_DATABASE=mahasiswa
+    DB_DATABASE=kendaraan
     DB_USERNAME=
     DB_PASSWORD=
     ```
-5. Setelah itu membuat Model Mahasiswa sekaligus migrate, controller dan resource untuk controller dengan cara dibawah.
+5. Setelah itu membuat Model sekaligus migrate, controller dan resource sebagai contoh.
     ```bash
-    php artisan make:model Mahasiswa -mcr
+    php artisan make:model Api/Kendaraan -mcr
     ```
 6. Setelah itu konfirurasi semuanya dan lakukan migrate database dengan cara dibawah.
     ```bash
     php artisan migrate
     php artisan migrate:fresh
     ```
-7. Setelah itu buat controller untuk CRUD pada controller, dan buat route untuk api pada routes/api.php .
+7. Setelah itu buat repository dan services.
+8. Kemudian dalam controller mengakses repository melalui services.
+9. kemudian integrasikan dan konfigurasi auth menggunakan JWT (JSON Web Token).
 
 ## Cara Menggunakan API
 
-1. Menampilkan semua data menggunakan method get.
+Kendaraan :
+1. Akses semua data menggunakan method get.
     ```bash
-    GET http://127.0.0.1:8000/api/mahasiswa
+    GET http://127.0.0.1:8000/api/kendaraan
     ```
-2. Menampilkan salahsatu data.
+2. Akses kendaraan berdasarkan nama.
     ```bash
-    GET http://127.0.0.1:8000/api/mahasiswa/{id}
+    GET http://127.0.0.1:8000/api/kendaraan/{kendaraan}
     ```
     Sebagai contoh : 
     ```bash
-    GET http://127.0.0.1:8000/api/mahasiswa/639a6f5c22f26a910e0cabe2
+    GET hhttp://127.0.0.1:8000/api/kendaraan/Lamborgini
     ```
 3. Menambah data menggunakan method post.
     ```bash
-    POST http://127.0.0.1:8000/api/mahasiswa/add
+    POST http://127.0.0.1:8000/api/kendaraan/add
     ```
 4. Update data menggunakan method put.
     ```bash
-    PUT http://127.0.0.1:8000/api/mahasiswa/update/{id}
+    PUT http://127.0.0.1:8000/api/kendaraan/update/{id}
     ```
     Sebagai contoh :
     ```bash
-    PUT http://127.0.0.1:8000/api/mahasiswa/update/639a6f5c22f26a910e0cabe2
+    PUT http://127.0.0.1:8000/api/kendaraan/update/639cb5f8920767ff6c0d5902
     ```
-3. Hapus data menggunakan.
+3. Akses stok kendaraan.
     ```bash
-    GET http://127.0.0.1:8000/api/mahasiswa/delete/{id}
+    GET http://127.0.0.1:8000/api/stok
     ```
-    Sebagi contoh
+
+Penjualan :
+1. Menambah data penjualan, method post.
     ```bash
-    GET http://127.0.0.1:8000/api/mahasiswa/delete/639a6977b7725f51614abda6
+    POST http://127.0.0.1:8000/api/penjualan
     ```
-Sebelum itu silahkan download terlebih dahulu file mahasiswas.json, setelah itu buat database baru dengan nama mahasiswas pada mongodb anda dan kemudian import file mahasiswas.json. kemudian jalankan file laravel pada localhost anda. setelah itu api pun bisa digunakan.
+2. Akses semua data laporan penjualan, method get.
+    ```bash
+    GET http://127.0.0.1:8000/api/laporan/all
+    ```
+3. Akses data laporan penjualan per kendaraan, method get.
+    ```bash
+    GET http://127.0.0.1:8000/api/laporan/{kendaraan}
+    ```
+    Sebagai contoh :
+    ```bash
+    GET http://127.0.0.1:8000/api/laporan/Motor
+    ```
+
+Auth :
+1. Api rgistrasi, method post.
+    ```bash
+    POST http://127.0.0.1:8000/api/register
+    ```
+1. Api login, method post.
+    ```bash
+    POST http://127.0.0.1:8000/api/login
+    ```
+1. Api user, method get dengan autorization token yang didapat dari login atau email dan pasword secara langsung juga bisa.
+    ```bash
+    GET http://127.0.0.1:8000/api/user
+    ```
