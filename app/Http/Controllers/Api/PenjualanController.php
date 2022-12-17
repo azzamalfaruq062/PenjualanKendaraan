@@ -36,7 +36,7 @@ class PenjualanController extends Controller
         ]);
         $result = $this->penjualanServices->penjualan($addPenjualan);
         if ($result) {
-            return ApiFormater::createApi(200, 'Succes', $result);
+            return ApiFormater::createApi(201, 'Succes', $result);
         }else{
             return ApiFormater::createApi(400, 'Not Found');
         }

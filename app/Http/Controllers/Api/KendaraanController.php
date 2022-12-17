@@ -69,7 +69,7 @@ class KendaraanController extends Controller
         }
         
         if ($result) {
-            return ApiFormater::createApi(200, 'Succes', $result);
+            return ApiFormater::createApi(201, 'Succes crated', $result);
         }else{
             return ApiFormater::createApi(400, 'Not Found');
         }
@@ -121,7 +121,7 @@ class KendaraanController extends Controller
         }
 
         if ($result) {
-            return ApiFormater::createApi(200, 'Succes', $result);
+            return ApiFormater::createApi(204, 'Update Succesfuly', $result);
         }else{
             return ApiFormater::createApi(400, 'Not Found');
         }
